@@ -1,6 +1,6 @@
 <template>
-  <div class="projectList">
-    <h1>Project List goes here</h1>
+  <div class="activityList">
+    <h1>Activities</h1>
     <h3>
       <ul>
         <li v-for="item in items" :key="item.id">{{ item.id }} - {{ item.name }}</li>
@@ -11,7 +11,7 @@
 
 <style>
 @media (min-width: 1024px) {
-  .projectList {
+  .activityList {
     min-height: 100vh;
     align-items: center;
   }
@@ -24,21 +24,21 @@ import axios from 'axios'
 const items = ref([{ id: 1, name: 'Foo' }, { id: 2, name: 'Bar' }])
 
 export default {
-  name: 'projectList',
+  name: 'activityList',
   data() {
     return {
-      projectList: []
+      activityList: []
     }
   },
   created() {
-    this.getProjectList()
+    this.getActivityList()
   },
   methods: {
-    getProjectList() {
+    getActivityList() {
       axios
-        .get('http://localhost:8080/api/v1.0/practice/project')
+        .get('http://localhost:8080/api/v1.0/practice/activity')
         .then((res) => {
-          this.projectList = res.data
+          this.activityList = res.data
         })
         .catch((error) => {
           console.log(error)
